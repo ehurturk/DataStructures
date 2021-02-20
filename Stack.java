@@ -1,13 +1,14 @@
 package apCSExercies;
 
-public class Stack {
+public class Stack<T> {
     
-    private Node top;
-    private Node temp;
-    private Node head;
-    
-    public Stack push(int data) {
-        Node node = new Node(data);
+    private Node<T> top;
+    private Node<T> temp;
+    private Node<T> head;
+
+   
+    public Stack<T> push(T data) {
+        Node<T> node = new Node<T>(data);
         if (top == null) {
             head = node;
             top = head;
@@ -20,21 +21,19 @@ public class Stack {
         return this;
     }
     
-    public int pop() {
+    public void pop() {
         if (isEmpty()) {
             System.out.println("Stack is empty! ");
-            return -1;
         }
 
         else {
             temp.next = null;
             top = temp;
-            return top.value;
         }
     }
-    
-    public Stack traverse() {
-        Node t = head;
+
+    public Stack<T> traverse() {
+        Node<T> t = head;
         while (t.next != null) {
             System.out.println(t.value);
             t = t.next;
@@ -48,25 +47,30 @@ public class Stack {
         return (top == null);
     }
 
-    public int peek() {
+    public T peek() {
         if (top == null) {
-            return Integer.MIN_VALUE;
-        }
-        else {
+            return null;
+        } else {
             return top.value;
         }
     }
-
-   
     
+
+
     public static void main(String[] args) {
-        Stack stack = new Stack();
-        stack.push(10);
-        stack.push(5);
-        stack.push(8);
-        stack.push(7);
-        stack.push(9);
-        stack.pop();
+        // Stack<Integer> stack = new Stack<Integer>();
+        // stack.push(10);
+        // stack.push(5);
+        // stack.push(8);
+        // stack.push(7);
+        // stack.push(9);
+        // stack.pop();
+        // stack.pop();
+        // stack.traverse();
+        Stack<String> stack = new Stack<String>();
+        stack.push("Hello");
+        stack.push("World");
+        stack.push("Guys!");
         stack.pop();
         stack.traverse();
         System.out.println("Peek is: " + stack.peek());
