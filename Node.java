@@ -1,4 +1,3 @@
-package apCSExercies;
 
 public class Node<T> {
     public T value;
